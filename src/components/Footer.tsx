@@ -7,7 +7,7 @@ export const Footer = () => (
                 <div className="col-span-1 md:col-span-2">
                     <div className="flex items-center gap-2 font-bold text-xl text-white mb-6">
                         <Cpu className="w-6 h-6 text-blue-500" />
-                        <span>ELECTROCORE</span>
+                        <span>КБ КП</span>
                     </div>
                     <p className="max-w-xs mb-6">
                         Ваш технологічний партнер у світі промислової та споживчої електроніки.
@@ -41,7 +41,7 @@ export const Footer = () => (
             </div>
 
             <div className="mt-16 pt-8 border-t border-slate-800 text-center text-xs">
-                © {new Date().getFullYear()} ElectroCore Systems. Зроблено в Києві 🇺🇦
+                © {new Date().getFullYear()} КБ КП. Зроблено в Києві 🇺🇦
             </div>
         </div>
     </footer>
