@@ -23,9 +23,9 @@ export const Hero = () => (
                     <Link href="/products" className="flex items-center gap-2 bg-slate-900 text-white px-8 py-4 rounded-lg font-semibold hover:bg-slate-800 transition-all shadow-lg">
                         Наші рішення <ChevronRight className="w-4 h-4" />
                     </Link>
-                    <button className="flex items-center gap-2 bg-slate-900 text-white px-8 py-4 rounded-lg font-semibold hover:bg-slate-800 transition-all shadow-lg">
+                    <Link href="/about" className="flex items-center gap-2 bg-slate-900 text-white px-8 py-4 rounded-lg font-semibold hover:bg-slate-800 transition-all shadow-lg">
                         Технічна база
-                    </button>
+                    </Link>
                 </div>
             </div>
 

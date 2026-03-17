@@ -18,7 +18,7 @@ export const Header = () => (
                 <Link href="/products" className="hover:text-blue-600 transition-colors">
                     Рішення
                 </Link>
-                <Link href="#about" className="hover:text-blue-600 transition-colors">
+                <Link href="/about" className="hover:text-blue-600 transition-colors">
                     Про компанію
                 </Link>
             </nav>
