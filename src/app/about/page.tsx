@@ -5,7 +5,7 @@ import { Target, Users, Factory, Award } from 'lucide-react';
 export default function AboutPage() {
     const stats = [
         { label: "Років досвіду", value: "12+", icon: <Award className="w-6 h-6" /> },
-        { label: "Інженерів у штаті", value: "25", icon: <Users className="w-6 h-6" /> },
+        { label: "Інженерів у штаті", value: "25+", icon: <Users className="w-6 h-6" /> },
         { label: "Кв.м виробництва", value: "1500", icon: <Factory className="w-6 h-6" /> },
         { label: "Проєктів реалізовано", value: "400+", icon: <Target className="w-6 h-6" /> },
     ];
@@ -19,7 +19,7 @@ export default function AboutPage() {
                     <div className="container mx-auto px-4 text-center">
                         <h1 className="text-4xl md:text-5xl font-bold mb-6">Про КБ КП</h1>
                         <p className="text-xl text-slate-400 max-w-3xl mx-auto">
-                            Ми створюємо майбутнє української електроніки, поєднуючи передові інженерні рішення з власним виробництвом у серці Києва.
+                            Ми створюємо майбутнє української електроніки, поєднуючи передові інженерні рішення з власним виробництвом.
                         </p>
                     </div>
                 </section>
@@ -48,7 +48,7 @@ export default function AboutPage() {
                                 ElectroCore розпочала свій шлях у 2014 році як невелика лабораторія прототипування. Сьогодні ми — потужний R&D центр, що забезпечує повний цикл розробки: від ідеї та проєктування друкованих плат до серійного виробництва.
                             </p>
                             <p>
-                                Наша локалізація в Києві дозволяє нам оперативно взаємодіяти з замовниками та забезпечувати найвищий контроль якості на кожному етапі монтажу компонентів.
+                                Наша локалізація дозволяє нам оперативно взаємодіяти з замовниками та забезпечувати найвищий контроль якості на кожному етапі монтажу компонентів.
                             </p>
                         </div>
                     </div>
