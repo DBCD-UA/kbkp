@@ -30,7 +30,7 @@ export const Hero = () => (
             </div>
 
             <div className="relative aspect-square bg-slate-100 rounded-3xl overflow-hidden border border-slate-200 shadow-2xl flex items-center justify-center">
-                <div className="absolute inset-0 bg-gradient-to-br from-blue-500/10 to-transparent"></div>
+                <div className="absolute inset-0 bg-linear-to-br from-blue-500/10 to-transparent"></div>
                 <Cpu className="w-32 h-32 text-blue-200 animate-pulse" />
             </div>
         </div>

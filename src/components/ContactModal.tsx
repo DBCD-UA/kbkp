@@ -42,7 +42,7 @@ export const ContactModal = ({ isOpen, onClose }: { isOpen: boolean, onClose: ()
     };
 
     return (
-        <div className="fixed inset-0 z-[100] flex items-center justify-center p-4">
+        <div className="fixed inset-0 z-100 flex items-center justify-center p-4">
             <div className="absolute inset-0 bg-slate-900/60 backdrop-blur-sm" onClick={onClose} />
 
             <div className="relative bg-white rounded-3xl shadow-2xl w-full max-w-lg overflow-hidden animate-in fade-in zoom-in duration-200">
@@ -53,7 +53,7 @@ export const ContactModal = ({ isOpen, onClose }: { isOpen: boolean, onClose: ()
                                 <CheckCircle2 className="w-10 h-10" />
                             </div>
                             <h2 className="text-3xl font-bold text-slate-900 mb-2">Надіслано!</h2>
-                            <p className="text-slate-500">Ми зв'яжемося з вами найближчим часом.</p>
+                            <p className="text-slate-500">Ми зв&#39;яжемося з вами найближчим часом.</p>
                         </div>
                     ) : (
                         <>
