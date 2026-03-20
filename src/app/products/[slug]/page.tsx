@@ -20,7 +20,6 @@ export default async function ProductPage({params}: { params: Promise<{ slug: st
             <Header />
 
             <main className="flex-1">
-                {/* Хлібні крихти та кнопка назад */}
                 <div className="bg-slate-50 border-b border-slate-200 py-4">
                     <div className="container mx-auto px-4">
                         <Link href="/products" className="inline-flex items-center gap-2 text-sm font-medium text-slate-500 hover:text-blue-600 transition-colors">
@@ -33,18 +32,16 @@ export default async function ProductPage({params}: { params: Promise<{ slug: st
                     <div className="container mx-auto px-4">
                         <div className="grid lg:grid-cols-2 gap-16 items-start">
 
-                            {/* Секція зображення */}
-                            <div className="sticky top-24">
+                            <div>
                                 <div className="relative aspect-square bg-slate-100 rounded-3xl overflow-hidden border border-slate-200 shadow-inner">
                                     <Image
                                         src={product.galleryImage}
                                         alt={product.title}
                                         fill
                                         className="object-cover"
-                                        priority // Пріоритет завантаження для LCP
+                                        priority
                                     />
                                 </div>
-                                {/* Бейджи під фото */}
                                 <div className="grid grid-cols-3 gap-4 mt-6">
                                     <div className="bg-slate-50 p-4 rounded-xl text-center border border-slate-100">
                                         <Zap className="w-5 h-5 text-blue-600 mx-auto mb-2" />
@@ -61,7 +58,6 @@ export default async function ProductPage({params}: { params: Promise<{ slug: st
                                 </div>
                             </div>
 
-                            {/* Інфо секція */}
                             <div>
                                 <div className="inline-block px-3 py-1 rounded-full bg-blue-50 text-blue-700 text-xs font-bold uppercase tracking-widest mb-6">
                                     {product.category}
