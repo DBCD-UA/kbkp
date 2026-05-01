@@ -1,10 +1,21 @@
 import { Header } from '@/components/Header';
 import { Footer } from '@/components/Footer';
-import { products } from '@/data/products';
 import Link from "next/link";
 import Image from "next/image";
+import { getPayload } from 'payload'
+import config from '@/payload.config' // проверь, чтобы путь вел к твоему файлу конфигурации
 
-export default function SolutionsPage() {
+export default async function SolutionsPage() {
+
+    const payload = await getPayload({ config })
+
+    // Получаем список продуктов из коллекции 'products'
+    const productsData = await payload.find({
+        collection: 'products',
+        depth: 1, // 1 уровень вложенности, чтобы достать данные картинки из коллекции Media
+    })
+
+    const products = productsData.docs;
     return (
         <div className="flex flex-col min-h-screen bg-slate-50">
             <Header />
@@ -22,17 +33,23 @@ export default function SolutionsPage() {
                         {products.map((product) => (
                             <Link
                                 key={product.id}
-                                href={`/products/${product.slug}`}
+                                href={`/products/${product.id}`}
                                 className="group bg-white rounded-2xl border border-slate-200 overflow-hidden hover:border-blue-500 transition-all shadow-sm"
                             >
-                                {/* Контейнер для изображения */}
+                                {/* Контейнер для зображення */}
                                 <div className="relative h-64 w-full bg-slate-100 overflow-hidden">
-                                    <Image
-                                        src={product.galleryImage}
-                                        alt={product.title}
-                                        fill
-                                        className="object-cover group-hover:scale-105 transition-transform duration-300"
-                                    />
+                                    {product.galleryImage && typeof product.galleryImage === 'object' ? (
+                                        <Image
+                                            src={product.galleryImage.url} // Дістаємо саме URL з об'єкта
+                                            alt={product.title}
+                                            fill
+                                            className="object-cover"
+                                        />
+                                    ) : (
+                                        <div className="flex items-center justify-center h-full text-slate-400">
+                                            No image
+                                        </div>
+                                    )}
                                 </div>
 
                                 <div className="p-8">
