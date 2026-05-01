@@ -333,6 +333,23 @@ export interface Auth {
   [k: string]: unknown;
 }
 
+export interface PayloadProduct {
+  id: string;
+  title: string;
+  category: string;
+  description: string;
+  fullDescription: string;
+
+  galleryImage?: {
+    url: string;
+    alt?: string;
+  };
+
+  features?: string[];
+
+  createdAt: string;
+  updatedAt: string;
+}
 
 declare module 'payload' {
   export interface GeneratedTypes extends Config {}

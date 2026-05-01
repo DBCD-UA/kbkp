@@ -3,7 +3,8 @@ import { Footer } from '@/components/Footer';
 import Link from "next/link";
 import Image from "next/image";
 import { getPayload } from 'payload'
-import config from '@/payload.config' // проверь, чтобы путь вел к твоему файлу конфигурации
+import config from '@/payload.config'
+import {PayloadProduct} from "@/payload-types"; // проверь, чтобы путь вел к твоему файлу конфигурации
 
 export default async function SolutionsPage() {
 
@@ -15,7 +16,7 @@ export default async function SolutionsPage() {
         depth: 1, // 1 уровень вложенности, чтобы достать данные картинки из коллекции Media
     })
 
-    const products = productsData.docs;
+    const products = productsData.docs as unknown as PayloadProduct[];
     return (
         <div className="flex flex-col min-h-screen bg-slate-50">
             <Header />

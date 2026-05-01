@@ -1,16 +1,24 @@
-import { products } from '@/data/products';
 import { notFound } from 'next/navigation';
 import { Header } from '@/components/Header';
 import { Footer } from '@/components/Footer';
 import Image from 'next/image';
 import { CheckCircle2, ArrowLeft, Zap, ShieldCheck, Cpu } from 'lucide-react';
 import Link from 'next/link';
+import {getPayload} from "payload";
+import config from "@payload-config";
+import {PayloadProduct} from "@/payload-types";
 
 export default async function ProductPage({params}: { params: Promise<{ slug: string }>
 }) {
     const {slug} = await params;
 
-    const product = products.find((p) => p.slug === slug);
+    const payload = await getPayload({ config })
+
+    const product = await payload.findByID({
+        collection: 'products',
+        id: slug,
+        depth: 1,
+    }) as unknown as PayloadProduct
     if (!product) {
         notFound();
     }
@@ -34,13 +42,18 @@ export default async function ProductPage({params}: { params: Promise<{ slug: st
 
                             <div>
                                 <div className="relative aspect-square bg-slate-100 rounded-3xl overflow-hidden border border-slate-200 shadow-inner">
-                                    <Image
-                                        src={product.galleryImage}
+                                    {product.galleryImage && typeof product.galleryImage === 'object' ? (
+                                        <Image
+                                        src={product.galleryImage.url}
                                         alt={product.title}
                                         fill
                                         className="object-cover"
-                                        priority
-                                    />
+                                        priority/>
+                                    ): (
+                                        <div className="flex items-center justify-center h-full text-slate-400">
+                                            No image
+                                        </div>
+                                    )}
                                 </div>
                                 <div className="grid grid-cols-3 gap-4 mt-6">
                                     <div className="bg-slate-50 p-4 rounded-xl text-center border border-slate-100">
@@ -66,7 +79,10 @@ export default async function ProductPage({params}: { params: Promise<{ slug: st
                                     {product.title}
                                 </h1>
                                 <p className="text-xl text-slate-600 leading-relaxed mb-10 border-l-4 border-blue-600 pl-6">
-                                    {product.fullDescription}
+{/*
+                                    TODO replace with fullDescription
+*/}
+                                    {product.description}
                                 </p>
 
                                 <div className="space-y-8">
@@ -74,14 +90,16 @@ export default async function ProductPage({params}: { params: Promise<{ slug: st
                                         <h3 className="text-lg font-bold text-slate-900 mb-4 flex items-center gap-2">
                                             Ключові характеристики
                                         </h3>
-                                        <ul className="grid sm:grid-cols-2 gap-4">
-                                            {product.features.map((feature, i) => (
-                                                <li key={i} className="flex items-start gap-3 bg-slate-50 p-4 rounded-xl border border-slate-100">
-                                                    <CheckCircle2 className="w-5 h-5 text-green-500 shrink-0 mt-0.5" />
-                                                    <span className="text-slate-700 font-medium">{feature}</span>
-                                                </li>
-                                            ))}
-                                        </ul>
+                                        {product.features && product.features.length > 0 && (
+                                            <ul className="grid sm:grid-cols-2 gap-4">
+                                                {product.features.map((feature, i) => (
+                                                    <li key={i} className="flex items-start gap-3 bg-slate-50 p-4 rounded-xl border border-slate-100">
+                                                        <CheckCircle2 className="w-5 h-5 text-green-500 shrink-0 mt-0.5" />
+                                                        <span className="text-slate-700 font-medium">{feature}</span>
+                                                    </li>
+                                                ))}
+                                            </ul>
+                                        )}
                                     </div>
 
                                     <hr className="border-slate-100" />
