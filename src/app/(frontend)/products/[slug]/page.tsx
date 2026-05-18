@@ -1,6 +1,7 @@
 import { notFound } from 'next/navigation';
 import { Header } from '@/components/Header';
 import { Footer } from '@/components/Footer';
+import { ProductActions } from '@/components/ProductActions';
 import Image from 'next/image';
 import { CheckCircle2, ArrowLeft, Zap, ShieldCheck, Cpu } from 'lucide-react';
 import Link from 'next/link';
@@ -109,9 +110,7 @@ export default async function ProductPage({params}: { params: Promise<{ slug: st
                                         <p className="text-slate-400 mb-6 text-sm">
                                             Ми готові адаптувати цей продукт під ваші технічні вимоги або розробити нове рішення з нуля.
                                         </p>
-                                        <button className="w-full bg-blue-600 hover:bg-blue-500 py-4 rounded-xl font-bold transition-all shadow-lg shadow-blue-600/20">
-                                            Запитати комерційну пропозицію
-                                        </button>
+                                        <ProductActions product={{ id: String(product.id), title: product.title, category: product.category }} />
                                     </div>
                                 </div>
                             </div>
