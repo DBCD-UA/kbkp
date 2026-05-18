@@ -1,9 +1,17 @@
 import { CollectionConfig } from 'payload'
 
+const isLoggedIn = ({ req }: { req: { user?: unknown } }) => Boolean(req.user);
+
 export const Products: CollectionConfig = {
     slug: 'products',
     admin: {
         useAsTitle: 'title',
+    },
+    access: {
+        read: () => true,
+        create: isLoggedIn,
+        update: isLoggedIn,
+        delete: isLoggedIn,
     },
     fields: [
         {

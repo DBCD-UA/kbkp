@@ -13,6 +13,7 @@ const filename = fileURLToPath(import.meta.url);
 const dirname = path.dirname(filename);
 
 export default buildConfig({
+  serverURL: process.env.NEXT_PUBLIC_SERVER_URL,
   admin: {
     user: Users.slug,
     importMap: {
@@ -21,15 +22,20 @@ export default buildConfig({
   },
   collections: [Users, Media, Products],
   editor: lexicalEditor(),
-  secret: process.env.PAYLOAD_SECRET || "",
+  secret: process.env.PAYLOAD_SECRET!,
   typescript: {
     outputFile: path.resolve(dirname, "payload-types.ts"),
   },
   db: postgresAdapter({
     pool: {
-      connectionString: process.env.DATABASE_URL || "",
+      connectionString: process.env.DATABASE_URL!,
     },
   }),
+  cors: [process.env.NEXT_PUBLIC_SERVER_URL ?? ''],
+  csrf: [process.env.NEXT_PUBLIC_SERVER_URL ?? ''],
+  graphQL: {
+    playground: process.env.NODE_ENV !== 'production',
+  },
   sharp,
   plugins: [],
 });
