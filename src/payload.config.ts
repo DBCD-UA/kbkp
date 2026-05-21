@@ -31,6 +31,7 @@ export default buildConfig({
     pool: {
       connectionString: process.env.DATABASE_URL!,
     },
+    push: true,
   }),
   cors: [process.env.NEXT_PUBLIC_SERVER_URL ?? ''],
   csrf: [process.env.NEXT_PUBLIC_SERVER_URL ?? ''],
