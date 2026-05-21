@@ -13,8 +13,12 @@ const nextConfig: NextConfig = {
         protocol: 'https',
         hostname: new URL(process.env.NEXT_PUBLIC_SERVER_URL ?? 'https://localhost').hostname,
       },
+      {
+        protocol: 'https',
+        hostname: '*.public.blob.vercel-storage.com',
+      },
     ],
   },
 };
 
-export default withPayload(withPayload(withPayload(withPayload(withPayload(nextConfig)))));
+export default withPayload(nextConfig);

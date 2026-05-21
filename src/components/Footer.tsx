@@ -35,7 +35,7 @@ export const Footer = () => (
                     <ul className="space-y-4 text-sm">
                         <li><a href="#" className="hover:text-white transition-colors">Політика конфіденційності</a></li>
                         <li><a href="#" className="hover:text-white transition-colors">Виробничі потужності</a></li>
-                        <li><a href="#" className="hover:text-white transition-colors">Кар'єра</a></li>
+                        <li><a href="#" className="hover:text-white transition-colors">Кар&apos;єра</a></li>
                     </ul>
                 </div>
             </div>
